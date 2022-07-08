@@ -1,24 +1,29 @@
 import React, { useState } from "react";
+import "./Data.css";
 
-function Data() {
-  const [data, setData] = useState({});
-  fetch("/data")
-    .then((res) => res.json())
-    .then(
-      (data) => setData(data),
-      () => {
-        console.log("data read : ", data);
-      }
-    )
-    .catch((e) => console.error(e));
+function Data({ data }) {
+  // let dummyDate = {data.date};
+  // const year = dummyDate.getFullYear();
+  // const month = dummyDate.getMonth() + 1;
+  // const date = dummyDate.getDate();
+  // let hi = `${year}-${month <= 10 ? "0" + month : month}-${
+  //   date <= 10 ? "0" + date : date
+  // }`
 
   return (
     <div>
-      {data.first} {data.second}
-      {/* {data[0].date} {data[0].weight} {data[0].exercise} {data[0].story} */}
-      {/* {data[1].date} {data[1].weight} {data[1].exercise} {data[1].story}
-      {data[2].date} {data[2].weight} {data[2].exercise} {data[2].story}
-      {data[3].date} {data[3].weight} {data[3].exercise} {data[3].story} */}
+      {data.map((data) => {
+        return (
+          <li key={data.id} className='data-list'>
+            <div>{data.date}</div>
+            <div>{data.weight}</div>
+
+            <img src={data.photo} />
+            <div>{data.exercise}</div>
+            <div>{data.story}</div>
+          </li>
+        );
+      })}
     </div>
   );
 }

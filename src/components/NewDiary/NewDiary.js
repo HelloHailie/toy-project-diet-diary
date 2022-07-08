@@ -2,12 +2,11 @@ import React from "react";
 import "./NewDiary.css";
 import DiaryForm from "./DiaryForm";
 
-const NewDiary = () => {
+const NewDiary = ({ setData }) => {
   return (
     <>
-      <DiaryForm></DiaryForm>
+      <DiaryForm setData={setData}></DiaryForm>
     </>
   );
 };
-
 export default NewDiary;

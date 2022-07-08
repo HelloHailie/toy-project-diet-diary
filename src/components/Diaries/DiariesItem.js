@@ -2,18 +2,14 @@ import React, { useState } from "react";
 
 import "./DiariesItem.css";
 
-const DiariesList = (props) => {
+const DiariesItem = (props) => {
   return (
     <ul>
       <li className='item'>
-        왜
-        <div className='items'>
-          안돼?
-          <div></div>
-        </div>
+        <div className='items'></div>
       </li>
     </ul>
   );
 };
 
-export default DiariesList;
+export default DiariesItem;
