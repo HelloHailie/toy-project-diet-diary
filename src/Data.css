@@ -4,3 +4,11 @@
   padding: 0;
   border: 1px solid pink;
 }
+
+#deleteBtn {
+  padding: 1rem 0.6rem 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  background: powderblue;
+  border-radius: 2rem;
+  transition: 0.5s;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Data from "./Data";
 import NewDiary from "./components/NewDiary/NewDiary";
+import Nav from "./components/Diaries/Nav";
+import Data from "./Data";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -26,9 +27,10 @@ const App = () => {
 
   return (
     <div>
+      <Nav />
       <header></header>
       <NewDiary setData={setData} />
-      <Data data={data} />
+      <Data data={data} setData={setData} />
     </div>
   );
 };

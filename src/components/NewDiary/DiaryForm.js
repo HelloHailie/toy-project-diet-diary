@@ -114,7 +114,7 @@ const DiaryForm = (props) => {
   };
 
   const submitHandler = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     const inputData = {
       date: new Date(enteredDate),
@@ -131,6 +131,7 @@ const DiaryForm = (props) => {
     console.log(response);
     console.log(response.data);
     props.setData(response.data);
+
     // navigate("/");
 
     // window.location.reload();
@@ -140,7 +141,7 @@ const DiaryForm = (props) => {
     <form onSubmit={submitHandler}>
       <div>
         <div>
-          <label>오늘도 해피데이</label>
+          {/* <label>오늘도 해피데이</label> */}
           <div className='bigbox'>
             <div>날짜</div>
             <input
