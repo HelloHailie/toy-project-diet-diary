@@ -25,15 +25,15 @@ function Data({ data, setData }) {
   // let year = data.date.getFullYear();
 
   const deleteBtnHandler = async (dataId) => {
-    console.log(dataId);
-    const deleteData = { id: dataId };
-    setData(data.filter((el) => el.id !== dataId));
-    // const deleteResponse = await axios.delete("/data", {
-    //   data: { id: dataId },
-    // });
-    // console.log(deleteResponse);
-    // console.log(deleteResponse.data);
-    // setData(deleteResponse.data);
+    // console.log(dataId);
+    // const deleteData = { id: dataId };
+    // setData(data.filter((el) => el.id !== dataId));
+    const deleteResponse = await axios.delete("/data", {
+      data: { id: dataId },
+    });
+    console.log(deleteResponse);
+    console.log(deleteResponse.data);
+    setData(deleteResponse.data);
   };
 
   return (
