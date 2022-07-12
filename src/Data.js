@@ -3,6 +3,7 @@ import "./Data.css";
 import DiariesDate from "./components/Diaries/DiariesDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function Data({ data, setData }) {
@@ -36,9 +37,34 @@ function Data({ data, setData }) {
     setData(deleteResponse.data);
   };
 
+  // const updateBtnHandler = async (dataId) => {
+  //   // console.log(dataId);
+  //   // const deleteData = { id: dataId };
+  //   // setData(data.filter((el) => el.id !== dataId));
+  //   const updateResponse = await axios.put("/data", {
+  //     data: { story: dataId },
+  //   });
+  //   console.log(updateResponse);
+  //   console.log(updateResponse.data);
+  //   setData(updateResponse.data);
+  // };
+
+  // dummydata 내림차순으로 정리하기
+  const sortedData = data.sort((f, s) => {
+    const idF = f.id;
+    const idS = s.id;
+    if (idF > idS) {
+      return -1;
+    }
+    if (idF < idS) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <div>
-      {data.map((data) => {
+      {sortedData.map((data) => {
         return (
           <li key={data.id} className='data-list'>
             <DiariesDate date={data.date}></DiariesDate>
@@ -50,10 +76,18 @@ function Data({ data, setData }) {
             <span id='deleteBtn'>
               <FontAwesomeIcon
                 icon={faTrashCan}
-                size='2x'
                 onClick={() => {
                   deleteBtnHandler(data.id);
                 }}
+              />
+            </span>
+            <span id='updateBtn'>
+              <FontAwesomeIcon
+                icon={faPenNib}
+                // onClick={() => {
+                //   updateBtnHandler(data.story);
+                // }
+                // }
               />
             </span>
           </li>
