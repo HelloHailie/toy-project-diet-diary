@@ -10,5 +10,4 @@ const DiariesDate = (date) => {
     </div>
   );
 };
-
 export default DiariesDate;

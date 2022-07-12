@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewDiary from "./components/NewDiary/NewDiary";
-import Nav from "./components/Diaries/Nav";
+import Header from "./components/Diaries/Header";
 import Data from "./Data";
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div>
-      <Nav />
+      <Header />
       <header></header>
       <NewDiary setData={setData} />
       <Data data={data} setData={setData} />

@@ -1,5 +1,4 @@
 import React from "react";
-import "./NewDiary.css";
 import DiaryForm from "./DiaryForm";
 
 const NewDiary = ({ setData }) => {

@@ -5,6 +5,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import styled from "styled-components";
+import DiaryForm from "./components/NewDiary/DiaryForm";
+import Modal from "./components/Diaries/Modal";
+
+export const ModalBackdrop = styled.div`
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+`;
+
+export const ModalView = styled.div.attrs((props) => ({
+  // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
+  role: "dialog",
+}))`
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 500px;
+  height: 300px;
+
+  > span.close-btn {
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  > div.desc {
+    margin-top: 25px;
+    color: #4000c7;
+  }
+`;
 
 function Data({ data, setData }) {
   // const year = data.date.getFullYear();
@@ -35,6 +70,11 @@ function Data({ data, setData }) {
     console.log(deleteResponse);
     console.log(deleteResponse.data);
     setData(deleteResponse.data);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const openModalHandler = () => {
+    setIsOpen(!isOpen);
   };
 
   // const updateBtnHandler = async (dataId) => {
@@ -81,15 +121,29 @@ function Data({ data, setData }) {
                 }}
               />
             </span>
+
             <span id='updateBtn'>
               <FontAwesomeIcon
                 icon={faPenNib}
+                onClick={openModalHandler}
                 // onClick={() => {
                 //   updateBtnHandler(data.story);
                 // }
                 // }
               />
             </span>
+            {isOpen === true ? (
+              <ModalBackdrop onClick={openModalHandler}>
+                <ModalView onClick={(e) => e.stopPropagation()}>
+                  <span onClick={openModalHandler} className='close-btn'>
+                    &times;
+                  </span>
+                  <div className='desc'>
+                    <Modal />
+                  </div>
+                </ModalView>
+              </ModalBackdrop>
+            ) : null}
           </li>
         );
       })}

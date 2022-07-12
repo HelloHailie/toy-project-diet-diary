@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 
-function Nav() {
+function Header() {
   return (
-    <div>
+    <header>
       <span>
         <FontAwesomeIcon icon={faHouse} size='3x' />
       </span>
@@ -14,8 +14,8 @@ function Nav() {
         <FontAwesomeIcon icon={faChartLine} size='3x' />
         그래프
       </span>
-    </div>
+    </header>
   );
 }
 
-export default Nav;
+export default Header;

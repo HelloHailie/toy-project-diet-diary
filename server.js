@@ -54,7 +54,7 @@ app.get("/data", (req, res) => {
 
 app.post("/data", (req, res) => {
   console.log(req.body);
-  dummyData.unshift({ ...req.body, id: dummyData.length + 1 + "" });
+  dummyData.unshift({ ...req.body, id: dummyData.length + 1 });
   res.status(201).json(dummyData);
 });
 
