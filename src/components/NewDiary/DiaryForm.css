@@ -1,5 +1,6 @@
 .bigbox {
   background-color: bisque;
+  padding: 10px;
 }
 #submit {
   padding: 1rem;
@@ -13,4 +14,17 @@
   background: cornflowerblue;
   color: white;
   transition: 0.5s;
+}
+textarea {
+  border: none;
+  resize: none;
+}
+input {
+  border: none;
+}
+select {
+  border: none;
+}
+label {
+  padding: 10px;
 }

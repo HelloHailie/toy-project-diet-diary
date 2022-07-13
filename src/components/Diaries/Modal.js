@@ -6,98 +6,57 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import Resizer from "react-image-file-resizer";
+import DiaryForm from "../NewDiary/DiaryForm";
 
-const Modal = (props) => {
-  const [enteredDate, setEnteredDate] = useState(new Date());
-  const [enteredWeight, setEnteredWeight] = useState("");
-  const [enteredPhoto, setEnteredPhoto] = useState("");
-  const [enteredExercise, setEnteredExercise] = useState("");
-  const [enteredStory, setEnteredStory] = useState("");
+// import React, { useState } from "react";
+// import DiaryForm from "../NewDiary/DiaryForm";
 
-  // let inputRef;
+// const Modal = ({ data }, { setData }) => {
+//   return (
+//     <>
+//       <DiaryForm value={data.inputdata}></DiaryForm>
+//     </>
+//   );
+// };
 
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
-    console.log(event.target.value);
-  };
+// export default Modal;
 
-  const weightChangeHandler = (event) => {
-    setEnteredWeight(event.target.value);
-    console.log(event.target.value);
-  };
+const Modal = ({ data, setData }) => {
+  const [date, setDate] = useState(data.date);
+  const [weight, setWeight] = useState(data.weight);
+  const [exercise, setExercise] = useState(data.exercise);
+  const [story, setStory] = useState(data.story);
 
-  const photoChangeHandler = (event) => {
-    let fileInput = false;
-    if (event.target.files[0]) {
-      console.log(event.target.files[0]);
-      fileInput = true;
-    }
-    if (fileInput) {
-      try {
-        Resizer.imageFileResizer(
-          event.target.files[0],
-          150,
-          150,
-          "png",
-          90,
-          0,
-          (uri) => {
-            console.log(uri);
-            setEnteredPhoto(uri);
-          },
-          "base64",
-          200,
-          200
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
+  // let data.date=null;
+  // data.weight=null
+  // data.exercise=null
+  // data.story = null;
+  // for (let i = 0; i < data.length; i++) {
+  //   if (data[i].id === id) {
+  //     console.log(data);
+  //   }
+  // }
+  // console.log(data);
 
-  const exerciseChangeHandler = (event) => {
-    console.log(event.target.value);
-    setEnteredExercise(event.target.value);
-  };
-
-  const storyChangeHandler = (event) => {
-    setEnteredStory(event.target.value);
-    console.log(event.target.value);
-  };
-
-  const submitHandler = async (event) => {
-    // event.preventDefault();
-
-    const inputData = {
-      date: new Date(enteredDate),
-      weight: enteredWeight,
-      photo: enteredPhoto,
-      exercise: enteredExercise,
-      story: enteredStory,
-    };
-    // props.onAddDiaries(inputData);
-    console.log(inputData);
-
-    const response = await axios.post("/data", inputData);
-
-    console.log(response);
-    console.log(response.data);
-    props.setData(response.data);
+  const updateSubmitHandler = (e) => {
+    return console.log(e.target.value);
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onClick={updateSubmitHandler}>
       <div>
         <div>
           {/* <label>오늘도 해피데이</label> */}
           <div className='bigbox'>
-            <div>날짜</div>
+            <label>날짜</label>
             <input
               type='date'
               min='2019-01-01'
               max='2022-12-31'
-              value={enteredDate}
-              onChange={dateChangeHandler}
+              value={date}
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
             />
             {/* <DatePicker selected={enteredDate} onChange={setEnteredDate} /> */}
             <label>몸무게</label>
@@ -105,8 +64,10 @@ const Modal = (props) => {
               type='number'
               min='0'
               max='150'
-              value={enteredWeight}
-              onChange={weightChangeHandler}
+              value={weight}
+              onChange={(e) => {
+                setWeight(e.target.value);
+              }}
             ></input>
             <label htmlFor='avatar'>식단 사진</label>
             {/* <input type='file' accept='image/*' onChange={photoChangeHandler} />
@@ -115,11 +76,15 @@ const Modal = (props) => {
               type='file'
               // accept='image/png, image/jpeg'
               // value={enteredPhoto}
-              onChange={photoChangeHandler}
             />
-            <img src={enteredPhoto} alt='food' />
+            <img src={data.photo} alt='' />
             <label>오늘의 운동</label>
-            <select onChange={exerciseChangeHandler}>
+            <select
+              value={exercise}
+              onChange={(e) => {
+                setExercise(e.target.value);
+              }}
+            >
               <option>걷기</option>
               <option>달리기</option>
               <option>요가</option>
@@ -131,14 +96,15 @@ const Modal = (props) => {
             <textarea
               rows='5'
               cols='33'
-              onChange={storyChangeHandler}
-              value={enteredStory}
+              value={story}
+              onChange={(e) => {
+                setStory(e.target.value);
+              }}
               placeholder='식단이나 운동에 대해 적어주세요.'
             ></textarea>
             <button type='submit' id='submit'>
-              게시글 올리기
+              수정 완료
             </button>
-            {/* <button onClick={sendImageToServer}>사진 올리기</button> */}
           </div>
         </div>
       </div>

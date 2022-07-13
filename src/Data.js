@@ -16,7 +16,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
   display: grid;
   place-items: center;
 `;
@@ -27,8 +27,8 @@ export const ModalView = styled.div.attrs((props) => ({
 }))`
   border-radius: 10px;
   background-color: #ffffff;
-  width: 500px;
-  height: 300px;
+  width: 600px;
+  height: 200px;
 
   > span.close-btn {
     margin-top: 5px;
@@ -36,30 +36,12 @@ export const ModalView = styled.div.attrs((props) => ({
   }
 
   > div.desc {
-    margin-top: 25px;
-    color: #4000c7;
+    margin-top: 10px;
+    color: black;
   }
 `;
 
 function Data({ data, setData }) {
-  // const year = data.date.getFullYear();
-  // const month ={data}.date.getMonth() + 1;
-  // const date = {data.date}.getDate();
-  // const showFilteredDate = `${year}-${month <= 10 ? "0" + month : month}-${
-  //   date <= 10 ? "0" + date : date
-  // }`
-
-  // const year = data.date.getFullYear();
-  // const month = data.date.getMonth() + 1;
-  // const date = data.date.getDate();
-  // const showFilteredDate = `${year}-${month <= 10 ? "0" + month : month}-${
-  //   date <= 10 ? "0" + date : date
-  // }`;
-
-  // const month = data.date.toLocaleString("en-US", { month: "long" });
-  // const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  // let year = data.date.getFullYear();
-
   const deleteBtnHandler = async (dataId) => {
     // console.log(dataId);
     // const deleteData = { id: dataId };
@@ -139,7 +121,14 @@ function Data({ data, setData }) {
                     &times;
                   </span>
                   <div className='desc'>
-                    <Modal />
+                    <Modal
+                      data={data}
+                      setData={setData}
+                      // date={date}
+                      // weight={weight}
+                      // exercise={exercise}
+                      // story={story}
+                    />
                   </div>
                 </ModalView>
               </ModalBackdrop>

@@ -52,8 +52,8 @@ const DiaryForm = (props) => {
             setEnteredPhoto(uri);
           },
           "base64",
-          200,
-          200
+          180,
+          180
         );
       } catch (err) {
         console.log(err);
@@ -143,7 +143,7 @@ const DiaryForm = (props) => {
         <div>
           {/* <label>오늘도 해피데이</label> */}
           <div className='bigbox'>
-            <div>날짜</div>
+            <label>날짜</label>
             <input
               type='date'
               min='2019-01-01'
@@ -169,7 +169,7 @@ const DiaryForm = (props) => {
               // value={enteredPhoto}
               onChange={photoChangeHandler}
             />
-            <img src={enteredPhoto} alt='food' />
+            <img src={enteredPhoto} alt='' />
             <label>오늘의 운동</label>
             <select onChange={exerciseChangeHandler}>
               <option>걷기</option>
