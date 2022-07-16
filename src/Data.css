@@ -2,7 +2,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  border: 1px solid pink;
+  box-shadow: 1px 2px 5px 1px rgb(248, 157, 172);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+
+  margin-top: 15px;
 }
 
 #deleteBtn {
@@ -13,6 +18,7 @@
   transition: 0.5s;
   height: 2rem;
   line-height: 2rem;
+  cursor: pointer;
 }
 
 #updateBtn {
@@ -23,4 +29,12 @@
   transition: 0.5s;
   height: 2rem;
   line-height: 2rem;
+  cursor: pointer;
+}
+
+.Data {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
 }

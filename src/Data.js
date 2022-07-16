@@ -24,13 +24,13 @@ export const ModalView = styled.div.attrs((props) => ({
   // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
   role: "dialog",
 }))`
-  border-radius: 10px;
+  border-radius: 10px 10px;
   background-color: #ffffff;
   width: 800px;
-  height: 200px;
+  height: 300px;
 
   > span.close-btn {
-    margin-top: 5px;
+    margin-top: 50px;
     cursor: pointer;
   }
 
@@ -87,14 +87,15 @@ function Data({ data, setData, enteredStory }) {
   // console.log(correctId);
 
   return (
-    <div>
+    <div className='Data'>
       {sortedData.map((data) => {
         return (
           <li key={data.id} className='data-list'>
+            <img src={data.photo} />
             <DiariesDate date={data.date}></DiariesDate>
             {/* <div>{data.date}</div> */}
             <div>{data.weight}kg</div>
-            <img src={data.photo} />
+
             <div>{data.exercise}</div>
             <div>{data.story}</div>
             <span id='deleteBtn'>

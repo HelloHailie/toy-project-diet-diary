@@ -6,6 +6,8 @@ import axios from "axios";
 import Resizer from "react-image-file-resizer";
 import DiaryForm from "../NewDiary/DiaryForm";
 
+import "./Modal.css";
+
 // import React, { useState } from "react";
 // import DiaryForm from "../NewDiary/DiaryForm";
 
@@ -56,7 +58,7 @@ const Modal = ({ data, setData }) => {
       <div>
         <div>
           {/* <label>오늘도 해피데이</label> */}
-          <div className='bigbox'>
+          <div className='Modal'>
             <label>날짜</label>
             <input
               type='date'
