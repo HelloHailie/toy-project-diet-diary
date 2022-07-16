@@ -124,12 +124,12 @@ const DiaryForm = (props) => {
       story: enteredStory,
     };
     // props.onAddDiaries(inputData);
-    console.log(inputData);
+    // console.log(inputData);
 
     const response = await axios.post("/data", inputData);
 
-    console.log(response);
-    console.log(response.data);
+    // console.log(response);
+    // console.log(response.data);
     props.setData(response.data);
 
     // navigate("/");

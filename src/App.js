@@ -11,7 +11,7 @@ const App = () => {
       res.json()
     );
     await setData(dataArr);
-    console.log(dataArr);
+    // console.log(dataArr);
   }
   useEffect(() => {
     Fetch();
@@ -28,7 +28,6 @@ const App = () => {
   return (
     <div>
       <Header />
-      <header></header>
       <NewDiary setData={setData} />
       <Data data={data} setData={setData} />
     </div>

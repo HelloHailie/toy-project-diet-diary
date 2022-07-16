@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
-// import DatePicker from "react-datepicker"; 그냥 input 메서드 쓰기로 함.
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+
 import Resizer from "react-image-file-resizer";
 import DiaryForm from "../NewDiary/DiaryForm";
 
@@ -24,26 +22,37 @@ import DiaryForm from "../NewDiary/DiaryForm";
 const Modal = ({ data, setData }) => {
   const [date, setDate] = useState(data.date);
   const [weight, setWeight] = useState(data.weight);
+  const [photo, setPhoto] = useState(data.weight);
   const [exercise, setExercise] = useState(data.exercise);
   const [story, setStory] = useState(data.story);
 
-  // let data.date=null;
-  // data.weight=null
-  // data.exercise=null
-  // data.story = null;
-  // for (let i = 0; i < data.length; i++) {
-  //   if (data[i].id === id) {
-  //     console.log(data);
-  //   }
-  // }
-  // console.log(data);
+  console.log(data.id);
 
-  const updateSubmitHandler = (e) => {
-    return console.log(e.target.value);
+  const updateSubmitHandler = async (id) => {
+    // id.preventDefault();
+    console.log(id);
+
+    const inputData = {
+      // id: dataId,
+      date: new Date(date),
+      weight: weight,
+      photo: photo,
+      exercise: exercise,
+      story: story,
+    };
+    console.log(inputData);
+    const updateResponse = await axios.patch("/data", inputData);
+    setData(updateResponse.data);
   };
 
+  //const correctId = data.filter((e) => e.id === props.id);
+  //console.log(correctId);
+  // const index = data.findIndex((data) => data.id === id);
+  // const newOne = [...data];
+  // newOne.splice();
+
   return (
-    <form onClick={updateSubmitHandler}>
+    <form>
       <div>
         <div>
           {/* <label>오늘도 해피데이</label> */}
@@ -53,7 +62,7 @@ const Modal = ({ data, setData }) => {
               type='date'
               min='2019-01-01'
               max='2022-12-31'
-              value={date}
+              defaultValue={date}
               onChange={(e) => {
                 setDate(e.target.value);
               }}
@@ -64,7 +73,7 @@ const Modal = ({ data, setData }) => {
               type='number'
               min='0'
               max='150'
-              value={weight}
+              defaultValue={data.weight}
               onChange={(e) => {
                 setWeight(e.target.value);
               }}
@@ -74,13 +83,14 @@ const Modal = ({ data, setData }) => {
             <img src={enteredPhoto.preview_URL} /> */}
             <input
               type='file'
+
               // accept='image/png, image/jpeg'
               // value={enteredPhoto}
             />
             <img src={data.photo} alt='' />
             <label>오늘의 운동</label>
             <select
-              value={exercise}
+              defaultValue={data.exercise}
               onChange={(e) => {
                 setExercise(e.target.value);
               }}
@@ -96,13 +106,17 @@ const Modal = ({ data, setData }) => {
             <textarea
               rows='5'
               cols='33'
-              value={story}
+              defaultValue={data.story}
               onChange={(e) => {
                 setStory(e.target.value);
               }}
               placeholder='식단이나 운동에 대해 적어주세요.'
             ></textarea>
-            <button type='submit' id='submit'>
+            <button
+              type='submit'
+              id='submit'
+              onClick={() => updateSubmitHandler(data.id)}
+            >
               수정 완료
             </button>
           </div>

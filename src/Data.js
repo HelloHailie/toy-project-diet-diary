@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Data.css";
 import DiariesDate from "./components/Diaries/DiariesDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,6 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import styled from "styled-components";
-import DiaryForm from "./components/NewDiary/DiaryForm";
 import Modal from "./components/Diaries/Modal";
 
 export const ModalBackdrop = styled.div`
@@ -27,7 +26,7 @@ export const ModalView = styled.div.attrs((props) => ({
 }))`
   border-radius: 10px;
   background-color: #ffffff;
-  width: 600px;
+  width: 800px;
   height: 200px;
 
   > span.close-btn {
@@ -41,7 +40,7 @@ export const ModalView = styled.div.attrs((props) => ({
   }
 `;
 
-function Data({ data, setData }) {
+function Data({ data, setData, enteredStory }) {
   const deleteBtnHandler = async (dataId) => {
     // console.log(dataId);
     // const deleteData = { id: dataId };
@@ -49,8 +48,8 @@ function Data({ data, setData }) {
     const deleteResponse = await axios.delete("/data", {
       data: { id: dataId },
     });
-    console.log(deleteResponse);
-    console.log(deleteResponse.data);
+    //  console.log(deleteResponse);
+    //  console.log(deleteResponse.data);
     setData(deleteResponse.data);
   };
 
@@ -59,8 +58,8 @@ function Data({ data, setData }) {
     setIsOpen(!isOpen);
   };
 
-  // const updateBtnHandler = async (dataId) => {
-  //   // console.log(dataId);
+  //const updateBtnHandler = async (dataId) => {
+  //console.log(dataId);
   //   // const deleteData = { id: dataId };
   //   // setData(data.filter((el) => el.id !== dataId));
   //   const updateResponse = await axios.put("/data", {
@@ -69,7 +68,7 @@ function Data({ data, setData }) {
   //   console.log(updateResponse);
   //   console.log(updateResponse.data);
   //   setData(updateResponse.data);
-  // };
+  //};
 
   // dummydata 내림차순으로 정리하기
   const sortedData = data.sort((f, s) => {
@@ -83,6 +82,9 @@ function Data({ data, setData }) {
     }
     return 0;
   });
+
+  //const correctId = sortedData.filter((e) => e.id === enteredStory);
+  // console.log(correctId);
 
   return (
     <div>
@@ -109,9 +111,8 @@ function Data({ data, setData }) {
                 icon={faPenNib}
                 onClick={openModalHandler}
                 // onClick={() => {
-                //   updateBtnHandler(data.story);
-                // }
-                // }
+                //   updateBtnHandler(data);
+                // }}
               />
             </span>
             {isOpen === true ? (
@@ -124,6 +125,8 @@ function Data({ data, setData }) {
                     <Modal
                       data={data}
                       setData={setData}
+                      enteredStory={enteredStory}
+                      //correctId={correctId}
                       // date={date}
                       // weight={weight}
                       // exercise={exercise}

@@ -65,12 +65,12 @@ app.delete("/data", (req, res) => {
   res.status(201).json(dummyData);
 });
 
-// app.put("/data", (req, res) => {
-//   console.log(req.body);
-//   // const idx = dummyData.findIndex((d) => d.id === req.body.id);
-//   // dummyData.splice(idx, 1);
-//   // res.status(201).json(dummyData);
-// });
+app.patch("/data", (req, res) => {
+  console.log(req.body);
+  const idx = dummyData.findIndex((d) => d.id === req.body.id);
+  dummyData.splice(idx, 1, req.body);
+  res.status(201).json(dummyData);
+});
 
 app.listen(PORT, () => {
   console.log(`server running on PORT http://localhost:${PORT}`);
