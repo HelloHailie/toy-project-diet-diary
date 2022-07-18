@@ -6,7 +6,7 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import Resizer from "react-image-file-resizer";
 
-const DiaryForm = (props) => {
+const DiaryForm = (props, { selectedDiary }) => {
   // let navigate = useNavigate();
 
   const [enteredDate, setEnteredDate] = useState(new Date());
@@ -21,6 +21,18 @@ const DiaryForm = (props) => {
   const [enteredStory, setEnteredStory] = useState("");
 
   // let inputRef;
+
+  //console.log(selectedDiary);
+
+  // useEffect(() => {
+  //   if (selectedDiary) {
+  //     setEnteredDate(selectedDiary.date);
+  //     setEnteredWeight(selectedDiary.weight);
+  //     setEnteredPhoto(selectedDiary.photo);
+  //     setEnteredExercise(selectedDiary.exercise);
+  //     setEnteredStory(selectedDiary.story);
+  //   }
+  // }, [selectedDiary]);
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
@@ -114,7 +126,7 @@ const DiaryForm = (props) => {
   };
 
   const submitHandler = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
     const inputData = {
       date: new Date(enteredDate),
@@ -169,7 +181,10 @@ const DiaryForm = (props) => {
               // value={enteredPhoto}
               onChange={photoChangeHandler}
             />
-            <img src={enteredPhoto} alt='' />
+            <span>
+              <img src={enteredPhoto} alt='' />
+            </span>
+
             <label>오늘의 운동</label>
             <select onChange={exerciseChangeHandler}>
               <option>걷기</option>

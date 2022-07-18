@@ -1,10 +1,10 @@
 import React from "react";
 import DiaryForm from "./DiaryForm";
 
-const NewDiary = ({ setData }) => {
+const NewDiary = ({ setData, selectedDiary }) => {
   return (
     <>
-      <DiaryForm setData={setData}></DiaryForm>
+      <DiaryForm setData={setData} selectedDiary={selectedDiary}></DiaryForm>
     </>
   );
 };

@@ -1,5 +1,5 @@
 .bigbox {
-  background-color: rgb(246, 235, 223);
+  background-color: rgb(252, 242, 243);
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
@@ -7,11 +7,16 @@
   box-shadow: 1px 2px 5px 1px rgb(199, 159, 116);
 
   margin-top: 15px;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
 }
 #submit {
   padding: 1rem;
   font-size: 1rem;
-  background: powderblue;
+  background: rgb(250, 214, 220);
   border-radius: 1rem;
   transition: 0.5s;
   cursor: pointer;
@@ -25,12 +30,18 @@
 textarea {
   border: none;
   resize: none;
+  padding: 0.3rem;
+  font-size: 1.125rem;
 }
 input {
   border: none;
+  padding: 0.3rem;
+  font-size: 1.125rem;
 }
 select {
   border: none;
+  padding: 0.3rem;
+  font-size: 1.125rem;
 }
 label {
   padding: 10px;

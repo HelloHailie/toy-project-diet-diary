@@ -1,7 +1,40 @@
 .Modal {
   background-color: rgb(246, 235, 223);
-  width: 800px;
-  height: 300px;
+  width: 900px;
+  height: 380px;
   padding-bottom: 20px;
   margin-bottom: 20px;
+  border-radius: 10px;
+
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px 1px skyblue;
+}
+
+textarea {
+  border: none;
+  resize: none;
+  font-size: 1.1rem;
+
+  /* background: none; */
+  outline: none;
+  border: none;
+  border-bottom: 1px double pink;
+}
+input {
+  border: none;
+  font-size: 1.1rem;
+
+  /* background: none; */
+  outline: none;
+  border: none;
+  border-bottom: 1px solid pink;
+}
+select {
+  border: none;
+  font-size: 1.1rem;
+
+  /* background: none; */
+  outline: none;
+  border: none;
+  border-bottom: 1px solid pink;
 }

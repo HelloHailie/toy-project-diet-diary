@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NewDiary from "./components/NewDiary/NewDiary";
 import Header from "./components/Diaries/Header";
 import Data from "./Data";
+import DiariesDate from "./components/Diaries/DiariesDate";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -25,11 +26,26 @@ const App = () => {
     //   .catch((e) => console.error(e));
   }, []);
 
+  // const [selectedDiary, setSelectedDiary] = useState(null);
+  // const onChangeSelectedDiary = (data) => {
+  //   setSelectedDiary(data);
+  // };
+
+  // const correctValue = (data) => {
+  //   data.filter(diary => diary.id === data.id? {...data,})
+  // }
+
   return (
     <div>
       <Header />
-      <NewDiary setData={setData} />
-      <Data data={data} setData={setData} />
+      <NewDiary setData={setData} /*selectedDiary={selectedDiary}*/ />
+      <Data
+        data={data}
+        setData={setData}
+        // onChangeSelectedDiary={() => {
+        //   onChangeSelectedDiary(data);
+        // }}
+      />
     </div>
   );
 };

@@ -24,10 +24,13 @@ export const ModalView = styled.div.attrs((props) => ({
   // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
   role: "dialog",
 }))`
-  border-radius: 10px 10px;
+  border-radius: 10px;
   background-color: #ffffff;
-  width: 800px;
-  height: 300px;
+  width: 900px;
+  height: 430px;
+
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px 1px skyblue;
 
   > span.close-btn {
     margin-top: 50px;
@@ -40,7 +43,7 @@ export const ModalView = styled.div.attrs((props) => ({
   }
 `;
 
-function Data({ data, setData, enteredStory }) {
+function Data({ data, setData /*onChangeSelectedDiary*/ }) {
   const deleteBtnHandler = async (dataId) => {
     // console.log(dataId);
     // const deleteData = { id: dataId };
@@ -58,17 +61,19 @@ function Data({ data, setData, enteredStory }) {
     setIsOpen(!isOpen);
   };
 
-  //const updateBtnHandler = async (dataId) => {
-  //console.log(dataId);
-  //   // const deleteData = { id: dataId };
-  //   // setData(data.filter((el) => el.id !== dataId));
-  //   const updateResponse = await axios.put("/data", {
-  //     data: { story: dataId },
-  //   });
-  //   console.log(updateResponse);
-  //   console.log(updateResponse.data);
-  //   setData(updateResponse.data);
-  //};
+  const updateBtnHandler = async (dataId) => {
+    // console.log(dataId);
+
+    setData(data.filter((el) => el.id === dataId.id));
+    //   // const deleteData = { id: dataId };
+    //   // setData(data.filter((el) => el.id !== dataId));
+    //   const updateResponse = await axios.put("/data", {
+    //     data: { story: dataId },
+    //   });
+    //   console.log(updateResponse);
+    //   console.log(updateResponse.data);
+    //   setData(updateResponse.data);
+  };
 
   // dummydata 내림차순으로 정리하기
   const sortedData = data.sort((f, s) => {
@@ -83,15 +88,22 @@ function Data({ data, setData, enteredStory }) {
     return 0;
   });
 
+  // const checkCorrectStory = sortedData.filter((diary) =>
+  //   diary.id === data.id ? data.story : data.story
+  // );
+
+  // console.log(checkCorrectStory);
   //const correctId = sortedData.filter((e) => e.id === enteredStory);
   // console.log(correctId);
+
+  // const { date, weight, photo, exercise, story } = data;
 
   return (
     <div className='Data'>
       {sortedData.map((data) => {
         return (
           <li key={data.id} className='data-list'>
-            <img src={data.photo} />
+            <img src={data.photo} alt='' />
             <DiariesDate date={data.date}></DiariesDate>
             {/* <div>{data.date}</div> */}
             <div>{data.weight}kg</div>
@@ -110,7 +122,11 @@ function Data({ data, setData, enteredStory }) {
             <span id='updateBtn'>
               <FontAwesomeIcon
                 icon={faPenNib}
-                onClick={openModalHandler}
+                onClick={() => {
+                  updateBtnHandler(data);
+                  // onChangeSelectedDiary(data);
+                  openModalHandler();
+                }}
                 // onClick={() => {
                 //   updateBtnHandler(data);
                 // }}
@@ -126,12 +142,14 @@ function Data({ data, setData, enteredStory }) {
                     <Modal
                       data={data}
                       setData={setData}
-                      enteredStory={enteredStory}
+                      // updateBtnHandler={updateBtnHandler(data)}
+                      //checkCorrectStory={checkCorrectStory}
+
                       //correctId={correctId}
                       // date={date}
                       // weight={weight}
                       // exercise={exercise}
-                      // story={story}
+                      //  story={story}
                     />
                   </div>
                 </ModalView>

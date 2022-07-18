@@ -8,31 +8,24 @@ import DiaryForm from "../NewDiary/DiaryForm";
 
 import "./Modal.css";
 
-// import React, { useState } from "react";
-// import DiaryForm from "../NewDiary/DiaryForm";
-
-// const Modal = ({ data }, { setData }) => {
-//   return (
-//     <>
-//       <DiaryForm value={data.inputdata}></DiaryForm>
-//     </>
-//   );
-// };
-
-// export default Modal;
-
-const Modal = ({ data, setData }) => {
+const Modal = ({
+  data,
+  setData,
+  // onChangeSelectedDiary,
+  checkCorrectStory,
+  updateBtnHandler,
+}) => {
   const [date, setDate] = useState(data.date);
   const [weight, setWeight] = useState(data.weight);
-  const [photo, setPhoto] = useState(data.weight);
+  const [photo, setPhoto] = useState(data.photo);
   const [exercise, setExercise] = useState(data.exercise);
   const [story, setStory] = useState(data.story);
 
-  console.log(data.id);
+  //console.log(data.id);
 
   const updateSubmitHandler = async (id) => {
     // id.preventDefault();
-    console.log(id);
+    //console.log(id);
 
     const inputData = {
       // id: dataId,
@@ -42,10 +35,37 @@ const Modal = ({ data, setData }) => {
       exercise: exercise,
       story: story,
     };
-    console.log(inputData);
+    //console.log(inputData);
     const updateResponse = await axios.patch("/data", inputData);
     setData(updateResponse.data);
   };
+
+  // const photoUpdateHandler = (event) => {
+  //   let fileInput = false;
+  //   if (event.target.files[0]) {
+  //     fileInput = true;
+  //   }
+  //   if (fileInput) {
+  //     try {
+  //       Resizer.imageFileResizer(
+  //         event.target.files[0],
+  //         150,
+  //         150,
+  //         "png",
+  //         90,
+  //         0,
+  //         (uri) => {
+  //           setPhoto(uri);
+  //         },
+  //         "base64",
+  //         180,
+  //         180
+  //       );
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // };
 
   //const correctId = data.filter((e) => e.id === props.id);
   //console.log(correctId);
@@ -54,7 +74,12 @@ const Modal = ({ data, setData }) => {
   // newOne.splice();
 
   return (
-    <form>
+    <form
+      onSubmit={() => {
+        // updateBtnHandler();
+        updateSubmitHandler(data.id);
+      }}
+    >
       <div>
         <div>
           {/* <label>오늘도 해피데이</label> */}
@@ -85,11 +110,12 @@ const Modal = ({ data, setData }) => {
             <img src={enteredPhoto.preview_URL} /> */}
             <input
               type='file'
-
+              //onChange={photoUpdateHandler}
               // accept='image/png, image/jpeg'
               // value={enteredPhoto}
             />
             <img src={data.photo} alt='' />
+            {/* <img src={photo} alt='' /> */}
             <label>오늘의 운동</label>
             <select
               defaultValue={data.exercise}
@@ -109,6 +135,7 @@ const Modal = ({ data, setData }) => {
               rows='5'
               cols='33'
               defaultValue={data.story}
+              //defaultValue={checkCorrectStory}
               onChange={(e) => {
                 setStory(e.target.value);
               }}
@@ -117,7 +144,7 @@ const Modal = ({ data, setData }) => {
             <button
               type='submit'
               id='submit'
-              onClick={() => updateSubmitHandler(data.id)}
+              // onClick={() => updateSubmitHandler(data.id)}
             >
               수정 완료
             </button>
