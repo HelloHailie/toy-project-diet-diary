@@ -128,6 +128,10 @@ const DiaryForm = (props, { selectedDiary }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
+    if (enteredStory.trim().length === 0) {
+      return;
+    }
+
     const inputData = {
       date: new Date(enteredDate),
       weight: enteredWeight,

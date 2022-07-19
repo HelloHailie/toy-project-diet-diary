@@ -26,7 +26,9 @@ const Modal = ({
   const updateSubmitHandler = async (id) => {
     // id.preventDefault();
     //console.log(id);
-
+    if (story.trim().length === 0) {
+      return;
+    }
     const inputData = {
       // id: dataId,
       date: new Date(date),
