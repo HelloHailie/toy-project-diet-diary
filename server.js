@@ -66,9 +66,14 @@ app.delete("/data", (req, res) => {
 });
 
 app.patch("/data", (req, res) => {
-  console.log(req.body);
+  console.log(req.body.id);
+
   const idx = dummyData.findIndex((d) => d.id === req.body.id);
-  dummyData.splice(idx, 1, req.body);
+  const updated = {
+    ...dummyData[idx],
+    ...req.body,
+  };
+  dummyData.splice(idx, 1, updated);
   res.status(201).json(dummyData);
 });
 

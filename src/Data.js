@@ -62,7 +62,7 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
   };
 
   const updateBtnHandler = async (dataId) => {
-    // console.log(dataId);
+    console.log(dataId);
 
     setData(data.filter((el) => el.id === dataId.id));
     //   // const deleteData = { id: dataId };
@@ -142,6 +142,7 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
                     <Modal
                       data={data}
                       setData={setData}
+                      updateBtnHandler={data}
                       // updateBtnHandler={updateBtnHandler(data)}
                       //checkCorrectStory={checkCorrectStory}
 

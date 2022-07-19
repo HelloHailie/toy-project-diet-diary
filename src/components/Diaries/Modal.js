@@ -106,8 +106,8 @@ const Modal = ({
               }}
             ></input>
             <label htmlFor='avatar'>식단 사진</label>
-            {/* <input type='file' accept='image/*' onChange={photoChangeHandler} />
-            <img src={enteredPhoto.preview_URL} /> */}
+            {/* <input type='file' accept='image/*' onChange={photoChangeHandler} /> */}
+            {/* <img src={enteredPhoto.preview_URL} /> */}
             <input
               type='file'
               //onChange={photoUpdateHandler}
