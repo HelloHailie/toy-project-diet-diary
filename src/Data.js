@@ -65,14 +65,6 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
     console.log(dataId);
 
     setData(data.filter((el) => el.id === dataId.id));
-    //   // const deleteData = { id: dataId };
-    //   // setData(data.filter((el) => el.id !== dataId));
-    //   const updateResponse = await axios.put("/data", {
-    //     data: { story: dataId },
-    //   });
-    //   console.log(updateResponse);
-    //   console.log(updateResponse.data);
-    //   setData(updateResponse.data);
   };
 
   // dummydata 내림차순으로 정리하기

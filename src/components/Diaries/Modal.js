@@ -36,6 +36,7 @@ const Modal = ({
       photo: photo,
       exercise: exercise,
       story: story,
+      id: id,
     };
     //console.log(inputData);
     const updateResponse = await axios.patch("/data", inputData);

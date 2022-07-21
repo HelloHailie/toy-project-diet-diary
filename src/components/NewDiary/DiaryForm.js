@@ -36,18 +36,18 @@ const DiaryForm = (props, { selectedDiary }) => {
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
   };
 
   const weightChangeHandler = (event) => {
     setEnteredWeight(event.target.value);
-    console.log(event.target.value);
+    //console.log(event.target.value);
   };
 
   const photoChangeHandler = (event) => {
     let fileInput = false;
     if (event.target.files[0]) {
-      console.log(event.target.files[0]);
+      //console.log(event.target.files[0]);
       fileInput = true;
     }
     if (fileInput) {
@@ -60,7 +60,7 @@ const DiaryForm = (props, { selectedDiary }) => {
           90,
           0,
           (uri) => {
-            console.log(uri);
+            //console.log(uri);
             setEnteredPhoto(uri);
           },
           "base64",
@@ -116,13 +116,13 @@ const DiaryForm = (props, { selectedDiary }) => {
   // };
 
   const exerciseChangeHandler = (event) => {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     setEnteredExercise(event.target.value);
   };
 
   const storyChangeHandler = (event) => {
     setEnteredStory(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
   };
 
   const submitHandler = async (event) => {
