@@ -8,13 +8,7 @@ import DiaryForm from "../NewDiary/DiaryForm";
 
 import "./Modal.css";
 
-const Modal = ({
-  data,
-  setData,
-  // onChangeSelectedDiary,
-  checkCorrectStory,
-  updateBtnHandler,
-}) => {
+const Modal = ({ data, setData, setIsOpen /*updateBtnHandler*/ }) => {
   const [date, setDate] = useState(data.date);
   const [weight, setWeight] = useState(data.weight);
   const [photo, setPhoto] = useState(data.photo);
@@ -23,14 +17,40 @@ const Modal = ({
 
   //console.log(data.id);
 
-  const updateSubmitHandler = async (id) => {
-    // id.preventDefault();
-    //console.log(id);
+  const photoUpdateHandler = (event) => {
+    let fileInput = false;
+    if (event.target.files[0]) {
+      fileInput = true;
+    }
+    if (fileInput) {
+      try {
+        Resizer.imageFileResizer(
+          event.target.files[0],
+          150,
+          150,
+          "png",
+          90,
+          0,
+          (uri) => {
+            setPhoto(uri);
+          },
+          "base64",
+          180,
+          180
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  const updateSubmitHandler = async (e, id) => {
+    e.preventDefault();
+    // console.log(id);
     if (story.trim().length === 0) {
       return;
     }
     const inputData = {
-      // id: dataId,
       date: new Date(date),
       weight: weight,
       photo: photo,
@@ -41,34 +61,8 @@ const Modal = ({
     //console.log(inputData);
     const updateResponse = await axios.patch("/data", inputData);
     setData(updateResponse.data);
+    setIsOpen(false);
   };
-
-  // const photoUpdateHandler = (event) => {
-  //   let fileInput = false;
-  //   if (event.target.files[0]) {
-  //     fileInput = true;
-  //   }
-  //   if (fileInput) {
-  //     try {
-  //       Resizer.imageFileResizer(
-  //         event.target.files[0],
-  //         150,
-  //         150,
-  //         "png",
-  //         90,
-  //         0,
-  //         (uri) => {
-  //           setPhoto(uri);
-  //         },
-  //         "base64",
-  //         180,
-  //         180
-  //       );
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // };
 
   //const correctId = data.filter((e) => e.id === props.id);
   //console.log(correctId);
@@ -78,9 +72,9 @@ const Modal = ({
 
   return (
     <form
-      onSubmit={() => {
+      onSubmit={(e) => {
         // updateBtnHandler();
-        updateSubmitHandler(data.id);
+        updateSubmitHandler(e, data.id);
       }}
     >
       <div>
@@ -92,7 +86,7 @@ const Modal = ({
               type='date'
               min='2019-01-01'
               max='2022-12-31'
-              defaultValue={date}
+              defaultValue={data.date}
               onChange={(e) => {
                 setDate(e.target.value);
               }}
@@ -113,11 +107,12 @@ const Modal = ({
             {/* <img src={enteredPhoto.preview_URL} /> */}
             <input
               type='file'
-              //onChange={photoUpdateHandler}
+              onChange={(e) => photoUpdateHandler(e)}
               // accept='image/png, image/jpeg'
               // value={enteredPhoto}
             />
-            <img src={data.photo} alt='' />
+            {/* 사진 변경하는 렌더링  */}
+            <img src={photo} alt='' />
             {/* <img src={photo} alt='' /> */}
             <label>오늘의 운동</label>
             <select
@@ -138,7 +133,6 @@ const Modal = ({
               rows='5'
               cols='33'
               defaultValue={data.story}
-              //defaultValue={checkCorrectStory}
               onChange={(e) => {
                 setStory(e.target.value);
               }}

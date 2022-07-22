@@ -22,8 +22,6 @@ const DiaryForm = (props, { selectedDiary }) => {
 
   // let inputRef;
 
-  //console.log(selectedDiary);
-
   // useEffect(() => {
   //   if (selectedDiary) {
   //     setEnteredDate(selectedDiary.date);
@@ -62,6 +60,7 @@ const DiaryForm = (props, { selectedDiary }) => {
           (uri) => {
             //console.log(uri);
             setEnteredPhoto(uri);
+            alert("서버에 등록이 완료되었습니다. ");
           },
           "base64",
           180,
@@ -129,6 +128,7 @@ const DiaryForm = (props, { selectedDiary }) => {
     event.preventDefault();
 
     if (enteredStory.trim().length === 0) {
+      alert("내용을 입력하세요");
       return;
     }
 
@@ -147,7 +147,6 @@ const DiaryForm = (props, { selectedDiary }) => {
     // console.log(response);
     // console.log(response.data);
     props.setData(response.data);
-
     // navigate("/");
 
     // window.location.reload();
@@ -157,7 +156,6 @@ const DiaryForm = (props, { selectedDiary }) => {
     <form onSubmit={submitHandler}>
       <div>
         <div>
-          {/* <label>오늘도 해피데이</label> */}
           <div className='bigbox'>
             <label>날짜</label>
             <input
@@ -209,7 +207,6 @@ const DiaryForm = (props, { selectedDiary }) => {
             <button type='submit' id='submit'>
               게시글 올리기
             </button>
-            {/* <button onClick={sendImageToServer}>사진 올리기</button> */}
           </div>
         </div>
       </div>

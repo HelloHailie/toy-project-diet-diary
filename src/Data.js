@@ -44,6 +44,13 @@ export const ModalView = styled.div.attrs((props) => ({
 `;
 
 function Data({ data, setData /*onChangeSelectedDiary*/ }) {
+  const [modalData, setModalData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModalHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   const deleteBtnHandler = async (dataId) => {
     // console.log(dataId);
     // const deleteData = { id: dataId };
@@ -56,15 +63,10 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
     setData(deleteResponse.data);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const openModalHandler = () => {
-    setIsOpen(!isOpen);
-  };
-
   const updateBtnHandler = async (dataId) => {
-    console.log(dataId);
-
-    setData(data.filter((el) => el.id === dataId.id));
+    // console.log(dataId);
+    setModalData(data.filter((el) => el.id === dataId.id)[0]);
+    // console.log(modalData);
   };
 
   // dummydata 내림차순으로 정리하기
@@ -80,11 +82,6 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
     return 0;
   });
 
-  // const checkCorrectStory = sortedData.filter((diary) =>
-  //   diary.id === data.id ? data.story : data.story
-  // );
-
-  // console.log(checkCorrectStory);
   //const correctId = sortedData.filter((e) => e.id === enteredStory);
   // console.log(correctId);
 
@@ -95,13 +92,13 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
       {sortedData.map((data) => {
         return (
           <li key={data.id} className='data-list'>
-            <img src={data.photo} alt='' />
-            <DiariesDate date={data.date}></DiariesDate>
+            <img className='photo' src={data.photo} alt='' />
+            <DiariesDate className='date' date={data.date} />
             {/* <div>{data.date}</div> */}
-            <div>{data.weight}kg</div>
+            <div className='date'>{data.weight}kg</div>
 
-            <div>{data.exercise}</div>
-            <div>{data.story}</div>
+            <div className='date'>{data.exercise}</div>
+            <div className='date'>{data.story}</div>
             <span id='deleteBtn'>
               <FontAwesomeIcon
                 icon={faTrashCan}
@@ -132,17 +129,10 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
                   </span>
                   <div className='desc'>
                     <Modal
-                      data={data}
+                      data={modalData}
                       setData={setData}
-                      updateBtnHandler={data}
-                      // updateBtnHandler={updateBtnHandler(data)}
-                      //checkCorrectStory={checkCorrectStory}
-
-                      //correctId={correctId}
-                      // date={date}
-                      // weight={weight}
-                      // exercise={exercise}
-                      //  story={story}
+                      // updateBtnHandler={data}
+                      setIsOpen={setIsOpen}
                     />
                   </div>
                 </ModalView>

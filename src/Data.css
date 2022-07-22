@@ -1,12 +1,11 @@
 .data-list {
   list-style: none;
-  margin: 0;
+  margin: auto;
   padding: 0;
   box-shadow: 1px 2px 5px 1px rgb(248, 157, 172);
   padding: 1rem;
   display: flex;
-  align-items: center;
-
+  /* align-items: center; */
   font-size: 1.1rem;
 
   margin-top: 15px;
@@ -39,4 +38,21 @@
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 20px;
+}
+.photo {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+
+  text-align: left;
+  padding: 10px;
+}
+
+.date {
+  text-align: left;
+  padding: 0px;
+  margin-left: 10px;
+  justify-content: space-between;
+  align-items: stretch;
+  display: flex;
 }
