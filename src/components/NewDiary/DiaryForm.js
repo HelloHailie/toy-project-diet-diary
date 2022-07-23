@@ -11,11 +11,6 @@ const DiaryForm = (props, { selectedDiary }) => {
 
   const [enteredDate, setEnteredDate] = useState(new Date());
   const [enteredWeight, setEnteredWeight] = useState("");
-  // const [enteredPhoto, setEnteredPhoto] = useState({
-  //   image_file: "",
-  //   preview_URL:
-  //     "https://previews.123rf.com/images/alekseyvanin/alekseyvanin1803/alekseyvanin180300009/96588544-%EA%B2%8C%EC%9E%84-%ED%8F%B4%EB%8D%94-%EA%B0%9C%EC%9A%94-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9E%85%EB%8B%88%EB%8B%A4-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%9B%B9-%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%EC%9C%84%ED%95%9C-%EC%84%A0%ED%98%95-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B8%B0%ED%98%B8-%EA%B2%8C%EC%9E%84-%ED%8C%A8%EB%93%9C-%EA%B0%84%EB%8B%A8%ED%95%9C-%EB%9D%BC%EC%9D%B8-%EB%B2%A1%ED%84%B0-%EC%95%84%EC%9D%B4%EC%BD%98-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8%EC%99%80-%ED%95%A8%EA%BB%98-%ED%8F%B4%EB%8D%94%EC%9E%85%EB%8B%88%EB%8B%A4-.jpg",
-  // });
   const [enteredPhoto, setEnteredPhoto] = useState("");
   const [enteredExercise, setEnteredExercise] = useState("");
   const [enteredStory, setEnteredStory] = useState("");
@@ -150,6 +145,12 @@ const DiaryForm = (props, { selectedDiary }) => {
     // navigate("/");
 
     // window.location.reload();
+
+    setEnteredDate(new Date());
+    setEnteredWeight("");
+    setEnteredPhoto("");
+    setEnteredExercise("");
+    setEnteredStory("");
   };
 
   return (
