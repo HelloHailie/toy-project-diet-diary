@@ -26,6 +26,9 @@ const App = () => {
     //   .catch((e) => console.error(e));
   }, []);
 
+  useEffect(() => {
+    const localData = localStorage.getItem("data");
+  }, []);
   // const [selectedDiary, setSelectedDiary] = useState(null);
   // const onChangeSelectedDiary = (data) => {
   //   setSelectedDiary(data);
