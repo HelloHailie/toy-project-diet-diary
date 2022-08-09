@@ -62,5 +62,8 @@
   "license": "ISC",
   "resolutions": {
     "styled-components": "^5"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6"
   }
 }

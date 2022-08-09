@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+//import { useLocalStorage } from "../../useLocalStorage";
 import "./DiaryForm.css";
 // import DatePicker from "react-datepicker"; 그냥 input 메서드 쓰기로 함.
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,7 +7,7 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import Resizer from "react-image-file-resizer";
 
-const DiaryForm = (props, { selectedDiary }) => {
+const DiaryForm = (props) => {
   // let navigate = useNavigate();
 
   const [enteredDate, setEnteredDate] = useState(new Date());
@@ -17,15 +18,7 @@ const DiaryForm = (props, { selectedDiary }) => {
 
   // let inputRef;
 
-  // useEffect(() => {
-  //   if (selectedDiary) {
-  //     setEnteredDate(selectedDiary.date);
-  //     setEnteredWeight(selectedDiary.weight);
-  //     setEnteredPhoto(selectedDiary.photo);
-  //     setEnteredExercise(selectedDiary.exercise);
-  //     setEnteredStory(selectedDiary.story);
-  //   }
-  // }, [selectedDiary]);
+  useEffect(() => {}, []);
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
@@ -136,7 +129,7 @@ const DiaryForm = (props, { selectedDiary }) => {
     };
 
     const response = await axios.post("/data", inputData);
-
+    window.localStorage.setItem("inputData", JSON.stringify(inputData));
     props.setData(response.data);
     // navigate("/");
 

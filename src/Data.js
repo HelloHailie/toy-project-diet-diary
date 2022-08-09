@@ -43,7 +43,7 @@ export const ModalView = styled.div.attrs((props) => ({
   }
 `;
 
-function Data({ data, setData /*onChangeSelectedDiary*/ }) {
+function Data({ data, setData }) {
   const [modalData, setModalData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -113,7 +113,6 @@ function Data({ data, setData /*onChangeSelectedDiary*/ }) {
                 icon={faPenNib}
                 onClick={() => {
                   updateBtnHandler(data);
-                  // onChangeSelectedDiary(data);
                   openModalHandler();
                 }}
                 // onClick={() => {

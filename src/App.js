@@ -5,6 +5,7 @@ import Data from "./Data";
 import DiariesDate from "./components/Diaries/DiariesDate";
 
 const App = () => {
+  //const [data, setData] = useState([]);
   const [data, setData] = useState([]);
 
   async function Fetch() {
@@ -16,6 +17,7 @@ const App = () => {
   }
   useEffect(() => {
     Fetch();
+
     // fetch("http://localhost:3003/data")
     //   .then((res) => res.json())
     //   .then((data) => {
@@ -27,7 +29,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const localData = localStorage.getItem("data");
+    localStorage.getItem("data");
   }, []);
   // const [selectedDiary, setSelectedDiary] = useState(null);
   // const onChangeSelectedDiary = (data) => {
@@ -41,14 +43,8 @@ const App = () => {
   return (
     <div>
       <Header />
-      <NewDiary setData={setData} /*selectedDiary={selectedDiary}*/ />
-      <Data
-        data={data}
-        setData={setData}
-        // onChangeSelectedDiary={() => {
-        //   onChangeSelectedDiary(data);
-        // }}
-      />
+      <NewDiary setData={setData} />
+      <Data data={data} setData={setData} />
     </div>
   );
 };
