@@ -53,20 +53,20 @@ app.get("/data", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   dummyData.unshift({ ...req.body, id: dummyData.length + 1 });
   res.status(201).json(dummyData);
 });
 
 app.delete("/data", (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   const idx = dummyData.findIndex((d) => d.id === req.body.id);
   dummyData.splice(idx, 1);
   res.status(201).json(dummyData);
 });
 
 app.patch("/data", (req, res) => {
-  console.log(req.body.id);
+  //console.log(req.body.id);
 
   const idx = dummyData.findIndex((d) => d.id === req.body.id);
   const updated = {

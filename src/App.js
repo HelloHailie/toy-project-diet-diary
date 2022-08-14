@@ -31,14 +31,6 @@ const App = () => {
   useEffect(() => {
     localStorage.getItem("data");
   }, []);
-  // const [selectedDiary, setSelectedDiary] = useState(null);
-  // const onChangeSelectedDiary = (data) => {
-  //   setSelectedDiary(data);
-  // };
-
-  // const correctValue = (data) => {
-  //   data.filter(diary => diary.id === data.id? {...data,})
-  // }
 
   return (
     <div>

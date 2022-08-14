@@ -1,0 +1,12 @@
+.weather-box {
+  position: relative;
+  display: inline-block;
+  margin: 20px auto;
+  background-color: rgba(225, 25, 225, 0.2);
+  border-radius: 15px;
+}
+
+.weather_img {
+  width: 5rem;
+  height: 4rem;
+}
