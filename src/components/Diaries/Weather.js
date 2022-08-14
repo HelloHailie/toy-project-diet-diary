@@ -65,9 +65,9 @@ const Weather = () => {
   return (
     <main>
       <div className='location'>{city}</div>
+      <div className='temp'>{weather}</div>
       {/* <div className='date'>{dateBuilder(new Date())}</div> */}
       <div className='weather-box'>
-        <div className='temp'>{weather}</div>
         <img className='weather_img' src={iconImg} />
       </div>
     </main>

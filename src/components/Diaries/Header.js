@@ -11,7 +11,7 @@ function Header() {
   return (
     <header className='Header'>
       <span className='side'>
-        <FontAwesomeIcon icon={faHouse} size='3x' />
+        <FontAwesomeIcon icon={faHouse} size='5x' />
       </span>
       <span className='title'>오늘도 해피해피</span>
       <span className='side'>
