@@ -1,40 +1,67 @@
 .data-list {
   list-style: none;
-  margin: auto;
+  margin-bottom: 10px;
   padding: 0;
   box-shadow: 1px 2px 5px 1px rgb(248, 157, 172);
   padding: 1rem;
   display: flex;
-  /* align-items: center; */
+  /* flex-direction: column; */
+  align-items: center;
   font-size: 1.1rem;
 
-  margin-top: 15px;
+  flex-wrap: nowrap;
+  height: 15vw;
+  width: auto;
+}
+
+.data-lists-photo {
+  margin: 5px 5px 5px 5px;
+  width: 20vw;
+  height: 20vh;
+
+  flex-basis: content;
+}
+
+.data-lists-data {
+  margin-left: 10px;
+  font-size: larger;
+}
+
+.data-lists-btn {
+  /* width: 100%; */
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 #deleteBtn {
   /* padding: 1rem 0.6rem 0.5rem 0.6rem; */
-  font-size: 1.5rem;
+  font-size: 4rem;
   background: powderblue;
-  border-radius: 2rem;
-  transition: 0.5s;
-  height: 2rem;
-  line-height: 2rem;
+  /* border-radius: 2rem; */
+  /* transition: 0.5s; */
+  height: 4.7rem;
+  width: 4rem;
+  /* line-height: 5rem; */
+
   cursor: pointer;
 }
 
 #updateBtn {
-  margin: 1rem;
-  font-size: 1.5rem;
+  margin-top: 10px;
+  font-size: 4rem;
   background: rgb(252, 167, 195);
-  border-radius: 2rem;
-  transition: 0.5s;
-  height: 2rem;
+  /* transition: 0.5s; */
+  height: 4.5rem;
+  width: 4rem;
   line-height: 2rem;
   cursor: pointer;
 }
 
 .Data {
   width: 90vw;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 20px;
@@ -42,17 +69,5 @@
 .photo {
   display: flex;
   flex-direction: column;
-  width: 20%;
-
-  text-align: left;
-  padding: 10px;
-}
-
-.date {
-  text-align: left;
-  padding: 0px;
-  margin-left: 10px;
-  justify-content: space-between;
-  align-items: stretch;
-  display: flex;
+  width: 100%;
 }

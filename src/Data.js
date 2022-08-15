@@ -92,34 +92,38 @@ function Data({ data, setData }) {
       {sortedData.map((data) => {
         return (
           <li key={data.id} className='data-list'>
-            <img className='photo' src={data.photo} alt='' />
-            <DiariesDate className='date' date={data.date} />
-            {/* <div>{data.date}</div> */}
-            <div className='date'>{data.weight}kg</div>
-
-            <div className='date'>{data.exercise}</div>
-            <div className='date'>{data.story}</div>
-            <span id='deleteBtn'>
-              <FontAwesomeIcon
-                icon={faTrashCan}
-                onClick={() => {
-                  deleteBtnHandler(data.id);
-                }}
-              />
-            </span>
-
-            <span id='updateBtn'>
-              <FontAwesomeIcon
-                icon={faPenNib}
-                onClick={() => {
-                  updateBtnHandler(data);
-                  openModalHandler();
-                }}
-                // onClick={() => {
-                //   updateBtnHandler(data);
-                // }}
-              />
-            </span>
+            <div className='data-lists-photo'>
+              <img className='photo' src={data.photo} alt='' />
+            </div>
+            <div className='data-lists-data'>
+              <DiariesDate className='date' date={data.date} />
+              {/* <div>{data.date}</div> */}
+              <div className='date'>{data.weight}kg</div>
+              <div className='date'>{data.exercise}</div>
+              <div className='date'>{data.story}</div>
+            </div>
+            <div className='data-lists-btn'>
+              <span id='deleteBtn'>
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  onClick={() => {
+                    deleteBtnHandler(data.id);
+                  }}
+                />
+              </span>
+              <span id='updateBtn'>
+                <FontAwesomeIcon
+                  icon={faPenNib}
+                  onClick={() => {
+                    updateBtnHandler(data);
+                    openModalHandler();
+                  }}
+                  // onClick={() => {
+                  //   updateBtnHandler(data);
+                  // }}
+                />
+              </span>
+            </div>
             {isOpen === true ? (
               <ModalBackdrop onClick={openModalHandler}>
                 <ModalView onClick={(e) => e.stopPropagation()}>

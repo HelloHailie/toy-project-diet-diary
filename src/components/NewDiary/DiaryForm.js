@@ -137,8 +137,8 @@ const DiaryForm = (props) => {
 
     setEnteredDate(new Date());
     setEnteredWeight("");
-    setEnteredPhoto("");
-    setEnteredExercise("");
+    setEnteredPhoto(null);
+    setEnteredExercise(null);
     setEnteredStory("");
   };
 
